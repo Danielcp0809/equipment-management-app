@@ -11,7 +11,51 @@
     h1{
         color: white;
         text-align: center;
+        font-size: 30px
     }
+}
+
+.slide-menu-option{
+    width: 100%;
+    height: 60px;
+    display: grid;
+    cursor: pointer;
+    grid-template-columns: 0.2fr 4fr 1fr;
+    div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+    .option-name{
+        h2{
+            font-weight: 800;
+            font-size: 20px;
+        }
+    }
+    .option-icon{
+        font-size: 25px;
+    }
+    &.active{
+        border: 1px solid white;
+        border-right-width: 0;
+        border-left-width: 0;
+        .option-head{
+            background-color: white;
+        }
+    }
+    
+
+}
+
+.slide-menu-option:hover{
+    border: 1px solid white;
+    border-right-width: 0;
+    border-left-width: 0;
+}
+
+.slide-menu-option:hover .option-head{
+    background-color: white;
 }
 
 .content{
