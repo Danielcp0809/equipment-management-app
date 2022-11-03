@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+html, body { min-width: 100vh }
+body { margin: 0; font-family: var(--font_family) }
+
+*{
+    font-family: var(--font_family);
+}
+
+:root{
+    --primary_color : #15286B;
+    --color_1: #4cb79e;
+    --color_2: #1E5F74;
+    --color_3: #FCDAB7;
+    --danger: #CC3C3C;
+    --info: #EDEDED;
+    --font_family: 'Mulish', sans-serif;
+}
+
+.webpage{
+    min-height: 100vh;
+    width: 100%;
+}
