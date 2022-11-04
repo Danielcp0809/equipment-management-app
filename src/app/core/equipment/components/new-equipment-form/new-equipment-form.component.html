@@ -1,0 +1,53 @@
+<app-modal modalClass="new-user-modal" [modalID]="modalID">
+    <div class="modal-header">
+        <h3>Create Equipment</h3>
+        <button class="md-close" (click)="closeModal(modalID)">Close</button>
+    </div>
+    <div class="modal-content">
+        <div class="form-container">
+            <form [formGroup]="newEquipForm">
+                <div class="input_field">
+                    <label>Brand</label>
+                    <input [class.input_field_error]="brandField?.invalid && brandField?.touched"
+                        [class.input_field_correct]="brandField?.valid && brandField?.touched" formControlName="brand"
+                        type="text" placeholder="Enter the first name">
+                    <div class="input_errors" *ngIf="brandField?.touched">
+                        <p *ngIf="brandField?.hasError('required')"><strong>This field is required</strong></p>
+                    </div>
+                </div>
+                <div class="input_field">
+                    <label>Model</label>
+                    <input [class.input_field_error]="modelField?.invalid && modelField?.touched"
+                        [class.input_field_correct]="modelField?.valid && modelField?.touched" formControlName="model"
+                        type="text" placeholder="Enter the first name">
+                    <div class="input_errors" *ngIf="modelField?.touched">
+                        <p *ngIf="modelField?.hasError('required')"><strong>This field is required</strong></p>
+                    </div>
+                </div>
+                <div class="input_field">
+                    <label>Serial Number</label>
+                    <input [class.input_field_error]="serialField?.invalid && serialField?.touched"
+                        [class.input_field_correct]="serialField?.valid && serialField?.touched" formControlName="serial"
+                        type="text" placeholder="Enter the first name">
+                    <div class="input_errors" *ngIf="serialField?.touched">
+                        <p *ngIf="serialField?.hasError('required')"><strong>This field is required</strong></p>
+                    </div>
+                </div>
+                <div class="input_field">
+                    <label>User ID</label>
+                    <input [class.input_field_error]="userIdField?.invalid && userIdField?.touched"
+                        [class.input_field_correct]="userIdField?.valid && userIdField?.touched" formControlName="user_id"
+                        type="text" placeholder="Enter the first name">
+                    <div class="input_errors" *ngIf="userIdField?.touched">
+                        <p *ngIf="userIdField?.hasError('required')"><strong>This field is required</strong></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="action-buttons">
+            <button class="action-button" [disabled]="newEquipForm.invalid" (click)="onSaveForm($event)">
+                Create
+            </button>
+        </div>
+    </div>
+</app-modal>

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="header">
         <h1>Equipment</h1>
-        <button class="action-button">
+        <button class="action-button" (click)="openModal('new-equipment')">
             Create Equipment
         </button>
     </div>
@@ -37,3 +37,5 @@
         </mat-card>
     </div>
 </div>
+
+<app-new-equipment-form modalID="new-equipment" [newEquipForm]="newEquipForm" (onNewEquipSave)="onNewEquipSave($event)"></app-new-equipment-form>

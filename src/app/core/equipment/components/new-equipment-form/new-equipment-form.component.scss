@@ -1,0 +1,30 @@
+.form-container {
+    width: 350px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.action-button {
+    background-color: #64BB45;
+    border: none;
+    height: 45px;
+    border-radius: 15px;
+    padding: 0px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+}
+
+.action-button:disabled {
+    background-color: gainsboro;
+}
+
+@media(max-width:700px) {
+    .form-container {
+        width: 100%;
+    }
+}
