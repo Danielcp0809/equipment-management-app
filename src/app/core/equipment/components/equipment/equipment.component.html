@@ -1,1 +1,39 @@
-<p>equipment works!</p>
+<div class="container">
+    <div class="header">
+        <h1>Equipment</h1>
+        <button class="action-button">
+            Create Equipment
+        </button>
+    </div>
+    <div class="sub-content">
+        <mat-card *ngFor="let equipment of equipmentList" class="equipment-card">
+            <div class="card-content">
+                <div class="equipment-card-header">
+                    <h2>TOSHIBA</h2>
+                    <div class="status-dot"></div>
+                </div>
+                <div class="equipment-info">
+                    <div class="info-line">
+                        <h4>Model:</h4>
+                        <h3>Model 123</h3>
+                    </div>
+                    <div class="info-line">
+                        <h4>Serial:</h4>
+                        <h3>TSH03021FA</h3>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="action-button small edit">
+                        <mat-icon class="button-icon" inline={{true}} aria-hidden="false" aria-label="Edit equipment icon"
+                            fontIcon="edit_square"></mat-icon>
+                    </button>
+                    <button class="action-button small delete">
+                        <mat-icon class="button-icon" inline={{true}} aria-hidden="false" aria-label="Edit equipment icon"
+                            fontIcon="delete"></mat-icon>
+                    </button>
+                    
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>
