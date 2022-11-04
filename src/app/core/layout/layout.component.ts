@@ -11,10 +11,12 @@ export class LayoutComponent implements OnInit {
     {
       title: 'Users',
       path: 'users',
+      icon: 'group'
     },
     {
       title: 'Equipment',
       path: 'equipment',
+      icon: 'devices'
     },
   ];
 
