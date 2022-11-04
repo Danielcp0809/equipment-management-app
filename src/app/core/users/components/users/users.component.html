@@ -1,1 +1,34 @@
-<p>users works!</p>
+<div class="container">
+    <div class="header">
+        <h1>Users</h1>
+        <button class="action-button">
+            Create User
+        </button>
+    </div>
+    <div class="sub-content">
+        <mat-card *ngFor="let user of users" class="user-card">
+            <div class="card-content">
+                <div class="user-card-header">
+                    <div class="status-dot"></div>
+                    <h2>Daniel Cordova</h2>
+                    <h3>daniel.cordova@example.com</h3>
+                </div>
+                <div class="action-buttons">
+                    <button class="action-button equipment">Equipment</button>
+                    <button class="action-button small info">
+                        <mat-icon class="button-icon" inline={{true}} aria-hidden="false" aria-label="User info icon"
+                            fontIcon="info"></mat-icon>
+                    </button>
+                    <button class="action-button small edit">
+                        <mat-icon class="button-icon" inline={{true}} aria-hidden="false" aria-label="Edit user icon"
+                            fontIcon="edit_square"></mat-icon>
+                    </button>
+                    <button class="action-button small delete">
+                        <mat-icon class="button-icon" inline={{true}} aria-hidden="false" aria-label="Edit user icon"
+                            fontIcon="delete"></mat-icon>
+                    </button>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

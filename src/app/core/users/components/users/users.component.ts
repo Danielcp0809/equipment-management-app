@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
+  users:any[]=[1,1,1,1,1,1,11,1,1,1]
+
   constructor() { }
 
   ngOnInit(): void {
