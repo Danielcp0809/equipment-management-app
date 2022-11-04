@@ -1,7 +1,7 @@
 <div class="container">
     <div class="header">
         <h1>Users</h1>
-        <button class="action-button">
+        <button class="action-button" (click)="openModal('new-user')">
             Create User
         </button>
     </div>
@@ -32,3 +32,5 @@
         </mat-card>
     </div>
 </div>
+<app-new-user-form modalID="new-user" [newUserForm]="newUserForm" (onNewUserSave)="onNewUserSave($event)">
+</app-new-user-form>

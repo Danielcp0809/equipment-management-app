@@ -1,4 +1,4 @@
-html, body { min-width: 100vh }
+html, body { min-width: 100% }
 body { margin: 0; font-family: var(--font_family) }
 
 *{
@@ -18,4 +18,86 @@ body { margin: 0; font-family: var(--font_family) }
 .webpage{
     min-height: 100vh;
     width: 100%;
+}
+
+.input_field{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin: 20px 0px;
+    label{
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+    input{
+        height: 45px;
+        outline: none;
+        border-radius: 10px;
+        border: 1px solid rgb(196, 196, 196);
+        padding: 0px 15px;
+        font-size: 15px;
+    }
+    input:focus{
+        border: 2px solid var(--color_2);
+        height: 41px;
+    }
+}
+
+.select-field{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin: 20px 0px;
+    label{
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+    select{
+        height: 45px;
+        outline: none;
+        border-radius: 10px;
+        border: 0;
+        padding: 0px 15px;
+        font-size: 15px;
+    }
+    select:focus{
+        border: 2px solid var(--color_1);
+        height: 41px;
+    }
+}
+
+.button_primary{
+    cursor: pointer;
+    background-color: var(--color_1);
+    color: white;
+    border-radius: 15px;
+    border:2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: fit-content;
+    p{
+        margin: 0px 30px !important;
+        font-size: 16px;
+    }
+}
+
+.input_errors{
+    p{
+        margin: 0px;
+        color: var(--danger)
+    }
+}
+
+.input_field_error{
+    border: 2px solid var(--danger) !important;
+}
+
+.botton_disabled{
+    background-color: gray;
+    border-color: rgb(71, 71, 71);;
+    p{
+        color: rgb(71, 71, 71);
+    }
 }
