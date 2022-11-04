@@ -1,0 +1,45 @@
+<app-modal modalClass="new-user-modal" [modalID]="modalID">
+    <div class="modal-header">
+        <h3>Create User</h3>
+        <button class="md-close" (click)="closeModal('new-user')">Close</button>
+    </div>
+    <div class="modal-content">
+        <div class="form-container">
+            <form [formGroup]="newUserForm">
+                <div class="input_field">
+                    <label>First Name</label>
+                    <input [class.input_field_error]="firstNameField?.invalid && firstNameField?.touched"
+                        [class.input_field_correct]="firstNameField?.valid && firstNameField?.touched"
+                        formControlName="firstName" type="text" placeholder="Enter the first name">
+                    <div class="input_errors" *ngIf="firstNameField?.touched">
+                        <p *ngIf="firstNameField?.hasError('required')"><strong>This field is required</strong></p>
+                    </div>
+                </div>
+                <div class="input_field">
+                    <label>Last Name</label>
+                    <input [class.input_field_error]="lastNameField?.invalid && lastNameField?.touched"
+                        [class.input_field_correct]="lastNameField?.valid && lastNameField?.touched"
+                        formControlName="lastName" type="text" placeholder="Enter the first name">
+                    <div class="input_errors" *ngIf="lastNameField?.touched">
+                        <p *ngIf="lastNameField?.hasError('required')"><strong>This field is required</strong></p>
+                    </div>
+                </div>
+                <div class="input_field">
+                    <label>Email</label>
+                    <input [class.input_field_error]="emailField?.invalid && emailField?.touched"
+                        [class.input_field_correct]="emailField?.valid && emailField?.touched" formControlName="email"
+                        type="text" placeholder="Enter the first name">
+                    <div class="input_errors" *ngIf="emailField?.touched">
+                        <p *ngIf="emailField?.hasError('required')"><strong>This field is required</strong></p>
+                        <p *ngIf="emailField?.hasError('email')"><strong>It must be a email</strong></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="action-buttons">
+            <button class="action-button" [disabled]="newUserForm.invalid" (click)="onSaveForm($event)">
+                Create
+            </button>
+        </div>
+    </div>
+</app-modal>
