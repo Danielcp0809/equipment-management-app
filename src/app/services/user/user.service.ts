@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { newUserModel } from 'src/app/shared/models/newUser.model';
 import { User } from 'src/app/shared/models/user.model';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  public url: string = 'https://equipment-management-api.azurewebsites.net';
+  private url: string = environment.API_URL;
 
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.url}/api/user`);
