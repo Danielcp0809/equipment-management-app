@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EquipmentService } from 'src/app/services/equipment/equipment.service';
+import { Equipment } from 'src/app/shared/models/equipment.model';
 import { newEquipment } from 'src/app/shared/models/newEquipment.model';
 
 @Component({
@@ -8,14 +10,16 @@ import { newEquipment } from 'src/app/shared/models/newEquipment.model';
   styleUrls: ['./equipment.component.scss'],
 })
 export class EquipmentComponent implements OnInit {
-  equipmentList: any[] = [1, 1, 1, 1, 1, 1, 11, 1, 1, 1];
+  equipmentList: Equipment[] = [];
   newEquipForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private equipmentService: EquipmentService) {
     this.buildForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getEquipment()
+  }
 
   buildForm() {
     this.newEquipForm = this.formBuilder.group({
@@ -32,5 +36,11 @@ export class EquipmentComponent implements OnInit {
 
   openModal(id: string) {
     document.querySelector('#' + id)?.classList.add('md-show');
+  }
+
+  getEquipment(){
+    this.equipmentService.getAllEquipment().subscribe((data: any) => {
+      this.equipmentList = data
+    })
   }
 }

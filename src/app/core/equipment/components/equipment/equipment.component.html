@@ -9,17 +9,17 @@
         <mat-card *ngFor="let equipment of equipmentList" class="equipment-card">
             <div class="card-content">
                 <div class="equipment-card-header">
-                    <h2>TOSHIBA</h2>
-                    <div class="status-dot"></div>
+                    <h2>{{equipment.brand}}</h2>
+                    <div class="status-dot" [class.active]="equipment.active"></div>
                 </div>
                 <div class="equipment-info">
                     <div class="info-line">
                         <h4>Model:</h4>
-                        <h3>Model 123</h3>
+                        <h3>{{equipment.model}}</h3>
                     </div>
                     <div class="info-line">
                         <h4>Serial:</h4>
-                        <h3>TSH03021FA</h3>
+                        <h3>{{equipment.serial}}</h3>
                     </div>
                 </div>
                 <div class="action-buttons">
