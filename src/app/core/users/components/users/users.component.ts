@@ -23,9 +23,7 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getAllUsers().subscribe((data: any) => {
-      this.users = data
-    })
+    this.getUsers()
   }
 
   buildForm() {
@@ -88,6 +86,12 @@ export class UsersComponent implements OnInit {
       });
       this.closeModal('new-user');
       this.isEdit = false;
+    })
+  }
+
+  getUsers(){
+    this.userService.getAllUsers().subscribe((data: any) => {
+      this.users = data
     })
   }
 }
