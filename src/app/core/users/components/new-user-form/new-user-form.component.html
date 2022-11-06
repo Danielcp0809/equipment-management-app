@@ -1,6 +1,6 @@
-<app-modal modalClass="new-user-modal" [modalID]="modalID">
+<app-modal modalClass="new-user-modal" [modalID]="modalID" (onClose)="closeModal('new-user')">
     <div class="modal-header">
-        <h3>Create User</h3>
+        <h3>{{isEdit ? 'Update' : 'Create'}} User</h3>
         <button class="md-close" (click)="closeModal('new-user')">Close</button>
     </div>
     <div class="modal-content">
@@ -37,8 +37,8 @@
             </form>
         </div>
         <div class="action-buttons">
-            <button class="action-button" [disabled]="newUserForm.invalid" (click)="onSaveForm($event)">
-                Create
+            <button class="action-button" [class.update]="isEdit" [disabled]="newUserForm.invalid" (click)="onSaveForm($event)">
+                {{isEdit ? 'Update' : 'Create'}}
             </button>
         </div>
     </div>

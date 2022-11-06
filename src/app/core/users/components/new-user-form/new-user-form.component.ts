@@ -10,7 +10,9 @@ import { newUserModel } from 'src/app/shared/models/newUser.model';
 export class NewUserFormComponent implements OnInit {
   @Input() modalID!: string;
   @Input() newUserForm!: FormGroup;
+  @Input() isEdit: boolean = false;
   @Output() onNewUserSave = new EventEmitter<newUserModel>();
+  @Output() onUserSave = new EventEmitter<newUserModel>();
   constructor() {}
 
   ngOnInit(): void {}
@@ -18,6 +20,7 @@ export class NewUserFormComponent implements OnInit {
   closeModal(id: string) {
     document.querySelector('#' + id)?.classList.remove('md-show');
     this.newUserForm.reset();
+    this.isEdit = false;
   }
 
   get firstNameField() {
@@ -34,6 +37,10 @@ export class NewUserFormComponent implements OnInit {
     event.preventDefault();
     if (this.newUserForm.invalid) return;
     const newUser: newUserModel = this.newUserForm.value;
-    this.onNewUserSave.emit(newUser);
+    if(this.isEdit){
+      this.onUserSave.emit(newUser)
+    }else{
+      this.onNewUserSave.emit(newUser);
+    }
   }
 }
