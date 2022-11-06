@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -11,6 +11,7 @@ export class ModalComponent implements OnInit {
   @Input() contentClass!: string;
   @Input() modalID!: string;
   @Input() backDrop = false;
+  @Output() onClose = new EventEmitter<void>();
   
   constructor() { }
 
@@ -19,6 +20,7 @@ export class ModalComponent implements OnInit {
 
   close(event: any) {
     document.querySelector('#' + event)?.classList.remove('md-show');
+    this.onClose.emit();
   }
 
 }
