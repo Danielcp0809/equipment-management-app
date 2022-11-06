@@ -7,6 +7,7 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NewUserFormComponent } from './components/new-user-form/new-user-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from 'src/app/services/user/user.service';
 
 
 @NgModule({
@@ -21,6 +22,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     FormsModule,
     ReactiveFormsModule
+  ],
+  providers:[
+    UserService
   ]
 })
 export class UsersModule { }
