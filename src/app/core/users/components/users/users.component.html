@@ -9,9 +9,9 @@
         <mat-card *ngFor="let user of users" class="user-card">
             <div class="card-content">
                 <div class="user-card-header">
-                    <div class="status-dot"></div>
-                    <h2>Daniel Cordova</h2>
-                    <h3>daniel.cordova@example.com</h3>
+                    <div class="status-dot" [class.active]="user.active"></div>
+                    <h2>{{user.firstName}} {{user.lastName}}</h2>
+                    <h3>{{user.email}}</h3>
                 </div>
                 <div class="action-buttons">
                     <button class="action-button equipment">Equipment</button>
@@ -19,11 +19,11 @@
                         <mat-icon class="button-icon" inline={{true}} aria-hidden="false" aria-label="User info icon"
                             fontIcon="info"></mat-icon>
                     </button>
-                    <button class="action-button small edit">
+                    <button class="action-button small edit" (click)="onUserEdit(user)">
                         <mat-icon class="button-icon" inline={{true}} aria-hidden="false" aria-label="Edit user icon"
                             fontIcon="edit_square"></mat-icon>
                     </button>
-                    <button class="action-button small delete">
+                    <button class="action-button small delete" (click)="onUserDelete(user.id)">
                         <mat-icon class="button-icon" inline={{true}} aria-hidden="false" aria-label="Edit user icon"
                             fontIcon="delete"></mat-icon>
                     </button>
@@ -32,5 +32,10 @@
         </mat-card>
     </div>
 </div>
-<app-new-user-form modalID="new-user" [newUserForm]="newUserForm" (onNewUserSave)="onNewUserSave($event)">
+<app-new-user-form 
+    modalID="new-user" 
+    [newUserForm]="newUserForm" 
+    [isEdit]="isEdit"
+    (onNewUserSave)="onNewUserSave($event)" 
+    (onUserSave)="onUserSave($event)">
 </app-new-user-form>
