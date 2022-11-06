@@ -1,5 +1,6 @@
 export interface newUserModel{
     firstName: string,
-    lastNaem: string,
+    lastName: string,
     email: string,
+    active?: boolean
 }
