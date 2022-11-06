@@ -7,19 +7,18 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserService } from './services/user/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { EquipmentService } from './services/equipment/equipment.service';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [UserService],
-  bootstrap: [AppComponent]
+  providers: [UserService, EquipmentService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
