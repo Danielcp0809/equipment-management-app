@@ -5,7 +5,7 @@
             Create User
         </button>
     </div>
-    <div class="sub-content">
+    <div *ngIf="users.length > 0" class="sub-content">
         <mat-card *ngFor="let user of users" class="user-card">
             <div class="card-content">
                 <div class="user-card-header">
@@ -30,6 +30,9 @@
                 </div>
             </div>
         </mat-card>
+    </div>
+    <div *ngIf="users.length === 0" class="sub-content" style="display: flex; align-items: center;">
+        <mat-spinner></mat-spinner>
     </div>
 </div>
 <app-new-user-form 
