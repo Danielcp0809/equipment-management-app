@@ -1,6 +1,6 @@
-export interface newEquipment{
-    brand: string,
-    model: string,
-    serial: string,
-    user_id: string,
+export interface newEquipment {
+  brand: string;
+  model: string;
+  serial: string;
+  user_id: string;
 }

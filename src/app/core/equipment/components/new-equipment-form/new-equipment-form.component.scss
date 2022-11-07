@@ -23,6 +23,31 @@
     background-color: gainsboro;
 }
 
+::ng-deep .user-selector .mat-form-field-underline{
+    display: none;
+}
+::ng-deep .user-selector .mat-form-field-flex{
+    width: 91%;
+}
+
+::ng-deep .user-selector .mat-form-field-infix{
+    border-top: 0;
+    padding: 0;
+}
+
+::ng-deep .user-selector .mat-form-field-wrapper{
+    padding-bottom: 0px !important;
+}
+
+::ng-deep .user-selector .mat-form-field-label{
+    top:26px;
+    left: 15px;
+}
+
+::ng-deep .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label{
+    display: none !important;
+}
+
 @media(max-width:700px) {
     .form-container {
         width: 100%;

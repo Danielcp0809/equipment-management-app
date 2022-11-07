@@ -24,14 +24,14 @@
                 </div>
                 <div class="action-buttons">
                     <button class="action-button small edit">
-                        <mat-icon class="button-icon" inline={{true}} aria-hidden="false" aria-label="Edit equipment icon"
-                            fontIcon="edit_square"></mat-icon>
+                        <mat-icon class="button-icon" inline={{true}} aria-hidden="false"
+                            aria-label="Edit equipment icon" fontIcon="edit_square"></mat-icon>
                     </button>
                     <button class="action-button small delete">
-                        <mat-icon class="button-icon" inline={{true}} aria-hidden="false" aria-label="Edit equipment icon"
-                            fontIcon="delete"></mat-icon>
+                        <mat-icon class="button-icon" inline={{true}} aria-hidden="false"
+                            aria-label="Edit equipment icon" fontIcon="delete"></mat-icon>
                     </button>
-                    
+
                 </div>
             </div>
         </mat-card>
@@ -41,4 +41,5 @@
     </div>
 </div>
 
-<app-new-equipment-form modalID="new-equipment" [newEquipForm]="newEquipForm" (onNewEquipSave)="onNewEquipSave($event)"></app-new-equipment-form>
+<app-new-equipment-form modalID="new-equipment" [userControl]="usersListControl" [usersList]="usersList" [newEquipForm]="newEquipForm" (onNewEquipSave)="onNewEquipSave($event)">
+</app-new-equipment-form>

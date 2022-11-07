@@ -27,17 +27,36 @@
                 <div class="input_field">
                     <label>Serial Number</label>
                     <input [class.input_field_error]="serialField?.invalid && serialField?.touched"
-                        [class.input_field_correct]="serialField?.valid && serialField?.touched" formControlName="serial"
-                        type="text" placeholder="Enter the first name">
+                        [class.input_field_correct]="serialField?.valid && serialField?.touched"
+                        formControlName="serial" type="text" placeholder="Enter the first name">
                     <div class="input_errors" *ngIf="serialField?.touched">
                         <p *ngIf="serialField?.hasError('required')"><strong>This field is required</strong></p>
                     </div>
                 </div>
                 <div class="input_field">
-                    <label>User ID</label>
+                    <label>User</label>
                     <input [class.input_field_error]="userIdField?.invalid && userIdField?.touched"
-                        [class.input_field_correct]="userIdField?.valid && userIdField?.touched" formControlName="user_id"
-                        type="text" placeholder="Enter the first name">
+                        [class.input_field_correct]="userIdField?.valid && userIdField?.touched"
+                        formControlName="user_id" type="text" placeholder="Enter the first name">
+                    <div class="input_errors" *ngIf="userIdField?.touched">
+                        <p *ngIf="userIdField?.hasError('required')"><strong>This field is required</strong></p>
+                    </div>
+                </div>
+
+                <div class="input_field">
+                    <label>User</label>
+                    <mat-form-field class="user-selector" style="border: 0;">
+                        <input [class.input_field_error]="userIdField?.invalid && userIdField?.touched"
+                            [class.input_field_correct]="userIdField?.valid && userIdField?.touched" type="text"
+                            matInput [formControl]="userControl" [matAutocomplete]="auto"
+                            placeholder="Enter the first name">
+                        <mat-autocomplete (optionSelected)="onSelectUser($event)" #auto="matAutocomplete"
+                            [displayWith]="displayFn">
+                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                {{option.firstName}} {{option.lastName}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
                     <div class="input_errors" *ngIf="userIdField?.touched">
                         <p *ngIf="userIdField?.hasError('required')"><strong>This field is required</strong></p>
                     </div>
