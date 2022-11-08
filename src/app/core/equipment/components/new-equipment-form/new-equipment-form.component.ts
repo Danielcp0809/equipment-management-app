@@ -14,7 +14,9 @@ export class NewEquipmentFormComponent implements OnInit, OnChanges {
   @Input() newEquipForm!: FormGroup;
   @Input() usersList!: User[];
   @Input() userControl!: FormControl;
+  @Input() isEdit: boolean = false;
   @Output() onNewEquipSave = new EventEmitter<newEquipment>();
+  @Output() onEquipSave = new EventEmitter<newEquipment>();
   filteredOptions!: Observable<User[]>;
 
   constructor() {}
@@ -23,7 +25,7 @@ export class NewEquipmentFormComponent implements OnInit, OnChanges {
     this.onUserSelectorChange()
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.onUserSelectorChange()
   }
 
@@ -44,6 +46,7 @@ export class NewEquipmentFormComponent implements OnInit, OnChanges {
     document.querySelector('#' + id)?.classList.remove('md-show');
     this.newEquipForm.reset();
     this.userControl.reset();
+    this.isEdit = false;
   }
 
   filterOption(name: string) {
@@ -71,7 +74,11 @@ export class NewEquipmentFormComponent implements OnInit, OnChanges {
     event.preventDefault();
     if (this.newEquipForm.invalid) return;
     const newEquip: newEquipment = this.newEquipForm.value;
-    this.onNewEquipSave.emit(newEquip);
+    if(this.isEdit){
+      this.onEquipSave.emit(newEquip)
+    }else{
+      this.onNewEquipSave.emit(newEquip);
+    }
   }
 
   displayFn(user: User): string {
@@ -79,9 +86,9 @@ export class NewEquipmentFormComponent implements OnInit, OnChanges {
   }
 
   onSelectUser(event: any) {
-    console.log(event.option.value.id);
+    this.newEquipForm.markAsDirty();
     this.newEquipForm.patchValue({
-      user_id: event.option.value.id,
+      user_id: event.option.value.id.toString(),
     });
   }
 }

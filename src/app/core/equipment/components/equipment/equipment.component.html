@@ -23,11 +23,11 @@
                     </div>
                 </div>
                 <div class="action-buttons">
-                    <button class="action-button small edit">
+                    <button class="action-button small edit" (click)="onEquipEdit(equipment)">
                         <mat-icon class="button-icon" inline={{true}} aria-hidden="false"
                             aria-label="Edit equipment icon" fontIcon="edit_square"></mat-icon>
                     </button>
-                    <button class="action-button small delete">
+                    <button class="action-button small delete" (click)="onUserDelete(equipment.id ? equipment.id : '')">
                         <mat-icon class="button-icon" inline={{true}} aria-hidden="false"
                             aria-label="Edit equipment icon" fontIcon="delete"></mat-icon>
                     </button>
@@ -41,5 +41,12 @@
     </div>
 </div>
 
-<app-new-equipment-form modalID="new-equipment" [userControl]="usersListControl" [usersList]="usersList" [newEquipForm]="newEquipForm" (onNewEquipSave)="onNewEquipSave($event)">
+<app-new-equipment-form 
+    modalID="new-equipment" 
+    [isEdit]="isEdit"
+    [userControl]="usersListControl" 
+    [usersList]="usersList" 
+    [newEquipForm]="newEquipForm" 
+    (onNewEquipSave)="onNewEquipSave($event)" 
+    (onEquipSave)="onEquipSave($event)">
 </app-new-equipment-form>

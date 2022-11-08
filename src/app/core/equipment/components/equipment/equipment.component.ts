@@ -47,7 +47,22 @@ export class EquipmentComponent implements OnInit {
   }
 
   onNewEquipSave(newEquip: newEquipment) {
-    console.log(newEquip);
+    this.equipmentService.createEquipment(newEquip).subscribe((res) => {
+      this.equipmentList = [...this.equipmentList, res];
+      this.closeModal('new-equipment');
+      this.newEquipForm.reset();
+      this.usersListControl.reset();
+    });
+  }
+
+  onUserDelete(id: string) {
+    try {
+      this.equipmentService.deleteEquipment(id).subscribe(() => {
+        this.equipmentList = this.equipmentList.filter(
+          (equip: Equipment) => equip.id !== id
+        );
+      });
+    } catch (error) {}
   }
 
   openModal(id: string) {
@@ -66,14 +81,46 @@ export class EquipmentComponent implements OnInit {
     });
   }
 
+  closeModal(id: string) {
+    document.querySelector('#' + id)?.classList.remove('md-show');
+    this.newEquipForm.reset();
+    this.usersListControl.reset();
+  }
+
   onEquipEdit(equip: Equipment) {
     this.equipToEdit = equip;
+    this.openModal('new-equipment');
     this.isEdit = true;
     const equipInfo: newEquipment = {
       brand: equip.brand,
       model: equip.model,
       serial: equip.serial,
-      user_id: equip.user ? equip.user.id : '',
+      user_id: equip.user ? equip.user.id.toString() : '',
     };
+    this.newEquipForm.reset(equipInfo);
+    this.usersListControl.reset(equip.user);
+  }
+
+  onEquipSave(equip: newEquipment) {
+    const equipId = this.equipToEdit.id ? this.equipToEdit.id : '';
+    this.equipToEdit.brand = equip.brand;
+    this.equipToEdit.model = equip.model;
+    this.equipToEdit.serial = equip.serial;
+    this.equipToEdit.user =
+      typeof this.usersListControl.value === 'string' ||
+      this.usersListControl.value === null
+        ? this.equipToEdit.user
+        : this.usersListControl.value;
+    delete this.equipToEdit.id;
+    this.equipmentService
+      .updateEquipment(equipId, this.equipToEdit)
+      .subscribe(() => {
+        this.equipmentList = this.equipmentList.map((oldEquip: Equipment) => {
+          if (oldEquip.id === this.equipToEdit.id) oldEquip = this.equipToEdit;
+          return oldEquip;
+        });
+        this.closeModal('new-equipment');
+        this.isEdit = false;
+      });
   }
 }

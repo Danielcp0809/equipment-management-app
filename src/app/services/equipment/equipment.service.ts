@@ -17,15 +17,15 @@ export class EquipmentService {
     return this.http.get<Equipment[]>(`${this.url}/api/equipment`);
   }
 
-  createEquipment(newUser: newEquipment): Observable<Equipment> {
-    return this.http.post<Equipment>(`${this.url}/api/equipment`, newUser);
+  createEquipment(newEquip: newEquipment): Observable<Equipment> {
+    return this.http.post<Equipment>(`${this.url}/api/equipment`, newEquip);
   }
 
   deleteEquipment(id: string): Observable<any>{
     return this.http.delete<any>(`${this.url}/api/equipment/${id}`)
   }
 
-  updateEquipment(id: string, equipment: newEquipment): Observable<any>{
+  updateEquipment(id: string, equipment: Equipment): Observable<any>{
     return this.http.put<any>(`${this.url}/api/equipment/${id}`, equipment)
   }
 }

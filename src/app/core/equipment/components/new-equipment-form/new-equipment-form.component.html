@@ -1,6 +1,6 @@
-<app-modal modalClass="new-user-modal" [modalID]="modalID">
+<app-modal modalClass="new-user-modal" [modalID]="modalID" (onClose)="closeModal(modalID)">
     <div class="modal-header">
-        <h3>Create Equipment</h3>
+        <h3>{{isEdit ? 'Update': 'Create'}} Equipment</h3>
         <button class="md-close" (click)="closeModal(modalID)">Close</button>
     </div>
     <div class="modal-content">
@@ -10,7 +10,7 @@
                     <label>Brand</label>
                     <input [class.input_field_error]="brandField?.invalid && brandField?.touched"
                         [class.input_field_correct]="brandField?.valid && brandField?.touched" formControlName="brand"
-                        type="text" placeholder="Enter the first name">
+                        type="text" placeholder="Enter the brand of equipment">
                     <div class="input_errors" *ngIf="brandField?.touched">
                         <p *ngIf="brandField?.hasError('required')"><strong>This field is required</strong></p>
                     </div>
@@ -19,7 +19,7 @@
                     <label>Model</label>
                     <input [class.input_field_error]="modelField?.invalid && modelField?.touched"
                         [class.input_field_correct]="modelField?.valid && modelField?.touched" formControlName="model"
-                        type="text" placeholder="Enter the first name">
+                        type="text" placeholder="Enter the model">
                     <div class="input_errors" *ngIf="modelField?.touched">
                         <p *ngIf="modelField?.hasError('required')"><strong>This field is required</strong></p>
                     </div>
@@ -28,12 +28,12 @@
                     <label>Serial Number</label>
                     <input [class.input_field_error]="serialField?.invalid && serialField?.touched"
                         [class.input_field_correct]="serialField?.valid && serialField?.touched"
-                        formControlName="serial" type="text" placeholder="Enter the first name">
+                        formControlName="serial" type="text" placeholder="Enter the serial number">
                     <div class="input_errors" *ngIf="serialField?.touched">
                         <p *ngIf="serialField?.hasError('required')"><strong>This field is required</strong></p>
                     </div>
                 </div>
-                <div class="input_field">
+                <!-- <div class="input_field">
                     <label>User</label>
                     <input [class.input_field_error]="userIdField?.invalid && userIdField?.touched"
                         [class.input_field_correct]="userIdField?.valid && userIdField?.touched"
@@ -41,7 +41,7 @@
                     <div class="input_errors" *ngIf="userIdField?.touched">
                         <p *ngIf="userIdField?.hasError('required')"><strong>This field is required</strong></p>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="input_field">
                     <label>User</label>
@@ -49,7 +49,7 @@
                         <input [class.input_field_error]="userIdField?.invalid && userIdField?.touched"
                             [class.input_field_correct]="userIdField?.valid && userIdField?.touched" type="text"
                             matInput [formControl]="userControl" [matAutocomplete]="auto"
-                            placeholder="Enter the first name">
+                            placeholder="Select the asigned user">
                         <mat-autocomplete (optionSelected)="onSelectUser($event)" #auto="matAutocomplete"
                             [displayWith]="displayFn">
                             <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -64,8 +64,9 @@
             </form>
         </div>
         <div class="action-buttons">
-            <button class="action-button" [disabled]="newEquipForm.invalid" (click)="onSaveForm($event)">
-                Create
+            <button class="action-button" [class.update]="isEdit" [disabled]="newEquipForm.invalid || !newEquipForm.dirty"
+                (click)="onSaveForm($event)">
+                {{isEdit ? 'Update' : 'Create'}}
             </button>
         </div>
     </div>
