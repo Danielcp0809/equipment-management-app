@@ -3,6 +3,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { generateManyProducts } from 'src/app/shared/models/user.mock';
 import { User } from 'src/app/shared/models/user.model';
 import { environment } from 'src/environments/environment';
 
@@ -29,17 +30,7 @@ fdescribe('UserService', () => {
     it('it should return a user list', (doneFnc) => {
       // AAA
       // 1.Arrange
-      const mockData: User[] = [
-        {
-          id: '1',
-          firstName: 'Daniel',
-          lastName: 'Cordova',
-          email: 'daniel.cordova@example.com',
-          active: true,
-          createdAt: '2022-11-02T05:40:01.290Z',
-          updatedAt: '2022-11-02T05:40:01.290Z',
-        },
-      ];
+      const mockData: User[] = generateManyProducts(2);
       // 2.Act
       userService.getAllUsers().subscribe((res) => {
         // 3.Assert
