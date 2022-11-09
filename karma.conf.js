@@ -39,6 +39,12 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['ChromeHeadless'],
+    customLaunchers:{
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox'] // bandera obligatoria para correr pruebas de CI
+      }
+    },
     singleRun: false,
     restartOnFileChange: true
   });
