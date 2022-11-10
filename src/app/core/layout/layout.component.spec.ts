@@ -6,7 +6,7 @@ import { CoreRoutingModule } from '../core-routing.module';
 
 import { LayoutComponent } from './layout.component';
 
-fdescribe('LayoutComponent', () => {
+describe('LayoutComponent', () => {
   let component: LayoutComponent;
   let fixture: ComponentFixture<LayoutComponent>; // environment to interact with the component
 
