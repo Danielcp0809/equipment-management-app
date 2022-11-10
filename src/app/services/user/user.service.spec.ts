@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 
 import { UserService } from './user.service';
 
-fdescribe('UserService', () => {
+describe('UserService', () => {
   let userService: UserService;
   let httpController: HttpTestingController;
 
