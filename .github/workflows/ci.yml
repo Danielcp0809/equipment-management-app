@@ -15,4 +15,4 @@ jobs:
       - name: Run tests
         run: npm run test -- --no-watch --code-coverage --browsers=ChromeHeadlessCI
         env:
-          enviroment: '${{ secrets.EQUIPMENT_MANAGEMENT_ENV }}'
+          API_URL: '${{ secrets.EQUIPMENT_MANAGEMENT_API_URL }}'
