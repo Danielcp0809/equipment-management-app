@@ -15,23 +15,26 @@
                     </div>
                 </div>
                 <div class="input_field">
-                    <label>Password</label>
+                    <div class="password-label">
+                        <label>Password</label>
+                        <mat-icon [inline]="true" aria-hidden="false" aria-label="Users icon" [fontIcon]="visibility ? 'visibility_off' : 'visibility'" (click)="toogleVisibility()"></mat-icon>
+                    </div>
                     <input [class.input_field_error]="passwordField?.invalid && passwordField?.touched"
                         [class.input_field_correct]="passwordField?.valid && passwordField?.touched"
-                        formControlName="password" type="password" placeholder="Enter the password">
+                        formControlName="password" [type]="visibility ? 'text': 'password'" placeholder="Enter the password">
                     <div class="input_errors" *ngIf="passwordField?.touched">
                         <p *ngIf="passwordField?.hasError('required')"><strong>This field is required</strong></p>
                     </div>
                 </div>
             </form>
             <div class="action-buttons">
-                <button class="button ms-signin">
+                <button class="button ms-signin" (click)="login()">
                     <mat-icon [inline]="true" aria-hidden="false" aria-label="Users icon" fontIcon="window"></mat-icon>
                     Sign in with Microsoft
                 </button>
                 <button class="button login">Log in</button>
                 <p>Forgot my password</p>
-                <button class="button signup">Sign up</button>
+                <button class="button signup" (click)="logout()">Sign up</button>
             </div>
         </div>
     </div>

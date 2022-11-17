@@ -28,6 +28,14 @@
     label{
         font-weight: bold;
     }
+    .password-label{
+        display: flex;
+        justify-content: space-between;
+        mat-icon{
+            font-size: 20px;
+            cursor: pointer;
+        }
+    }
     
 }
 

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  API_URL: process.env['API_URL'] || ''
+  API_URL: process.env['API_URL'] || '',
+  AZURE_CLIENT_ID: process.env['AZURE_CLIENT_ID'] || '',
 };
 
 /*
