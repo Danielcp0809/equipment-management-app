@@ -1,0 +1,75 @@
+.webpage{
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+}
+
+.header{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.login-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    form{
+        width: 350px;
+    }
+}
+
+.input_field{
+    input{
+        background-color: #F7F7F7;
+        &.input_field_error{
+            background-color: #FFF9F9;
+        }
+    }
+    label{
+        font-weight: bold;
+    }
+    
+}
+
+.action-buttons{
+    margin-top: 50px;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .button{
+        height: 60px;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        &.ms-signin{
+            background-color: white;
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            mat-icon{
+                align-items: center;
+                font-size: 25px;
+                display: flex;
+            }
+        }
+        &.login{
+            background-color: #395CD9;
+            color: white;
+            border: 1px solid #395CD9;
+        }
+        &.signup{
+            background-color: white;
+            border: 1px solid #395CD9;
+            color: #395CD9;
+        }
+    }
+    p{
+        text-align: center;
+        color: #395CD9;
+        cursor: pointer;
+    }
+}

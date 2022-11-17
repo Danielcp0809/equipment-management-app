@@ -1,1 +1,38 @@
-<p>login works!</p>
+<div class="webpage">
+    <div class="header">
+        <h1>Equipment Management System</h1>
+    </div>
+    <div class="login-container">
+        <div class="form-container">
+            <form [formGroup]="loginForm">
+                <div class="input_field">
+                    <label>User or Email</label>
+                    <input [class.input_field_error]="userField?.invalid && userField?.touched"
+                        [class.input_field_correct]="userField?.valid && userField?.touched" formControlName="user"
+                        type="text" placeholder="Enter the username or email">
+                    <div class="input_errors" *ngIf="userField?.touched">
+                        <p *ngIf="userField?.hasError('required')"><strong>This field is required</strong></p>
+                    </div>
+                </div>
+                <div class="input_field">
+                    <label>Password</label>
+                    <input [class.input_field_error]="passwordField?.invalid && passwordField?.touched"
+                        [class.input_field_correct]="passwordField?.valid && passwordField?.touched"
+                        formControlName="password" type="password" placeholder="Enter the password">
+                    <div class="input_errors" *ngIf="passwordField?.touched">
+                        <p *ngIf="passwordField?.hasError('required')"><strong>This field is required</strong></p>
+                    </div>
+                </div>
+            </form>
+            <div class="action-buttons">
+                <button class="button ms-signin">
+                    <mat-icon [inline]="true" aria-hidden="false" aria-label="Users icon" fontIcon="window"></mat-icon>
+                    Sign in with Microsoft
+                </button>
+                <button class="button login">Log in</button>
+                <p>Forgot my password</p>
+                <button class="button signup">Sign up</button>
+            </div>
+        </div>
+    </div>
+</div>

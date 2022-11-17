@@ -39,7 +39,7 @@ body { margin: 0; font-family: var(--font_family) }
     }
     input:focus{
         border: 2px solid var(--color_2);
-        height: 41px;
+        height: 43px;
     }
 }
 
@@ -62,7 +62,7 @@ body { margin: 0; font-family: var(--font_family) }
     }
     select:focus{
         border: 2px solid var(--color_1);
-        height: 41px;
+        height: 43px;
     }
 }
 
@@ -92,6 +92,7 @@ body { margin: 0; font-family: var(--font_family) }
 
 .input_field_error{
     border: 2px solid var(--danger) !important;
+    height: 43px;
 }
 
 .botton_disabled{
