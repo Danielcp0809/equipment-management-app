@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { User } from './user.model';
 
-export const generateOneProduct = (): User => {
+export const generateOneUser = (): User => {
   return {
     id: faker.datatype.uuid().toString(),
     firstName: faker.name.firstName(),
@@ -13,10 +13,10 @@ export const generateOneProduct = (): User => {
   };
 };
 
-export const generateManyProducts = (size = 10): User[] => {
+export const generateManyUsers = (size = 10): User[] => {
   const users: User[] = [];
   for (let index = 0; index < size; index++) {
-    users.push(generateOneProduct());
+    users.push(generateOneUser());
   }
   return [...users];
 };

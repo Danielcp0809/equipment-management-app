@@ -8,11 +8,27 @@
     width: 250px;
     min-height: 100vh;
     background-color: var(--primary_color);
-
+    display: grid;
+    grid-template-rows: 1fr 6fr;
     h1 {
         color: white;
         text-align: center;
         font-size: 30px
+    }
+    .logout-container{
+        display: flex;
+        justify-content: center;
+    }
+    .button_primary{
+        width: 150px;
+        background-color: white;
+        color: var(--primary_color);
+        font-size: 16px;
+        font-weight: bold;
+        gap: 20px;
+        mat-icon{
+            font-size: 20px;
+        }
     }
 }
 
@@ -55,8 +71,6 @@
             background-color: white;
         }
     }
-
-
 }
 
 .slide-menu-option:hover {

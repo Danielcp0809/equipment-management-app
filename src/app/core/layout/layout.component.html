@@ -2,17 +2,26 @@
     <div class="main-container">
         <div class="slide-menu">
             <h1>Equipment Management</h1>
-            <div style="margin-top: 75px;">
-                <div *ngFor="let option of menuItems" class="slide-menu-option"
-                    [class.active]="route === '/'+ option.path" (click)="onClickItem(option.path)">
-                    <div class="option-head"></div>
-                    <div class="option-name">
-                        <h2>{{option.title}}</h2>
+            <div style="display: grid; grid-template-rows: 10fr 1fr;">
+                <div style="margin-top: 31px;">
+                    <div *ngFor="let option of menuItems" class="slide-menu-option"
+                        [class.active]="route === '/'+ option.path" (click)="onClickItem(option.path)">
+                        <div class="option-head"></div>
+                        <div class="option-name">
+                            <h2>{{option.title}}</h2>
+                        </div>
+                        <div class="option-icon">
+                            <mat-icon [inline]="true" aria-hidden="false" aria-label="Users icon"
+                                [fontIcon]="option.icon">
+                            </mat-icon>
+                        </div>
                     </div>
-                    <div class="option-icon">
-                        <mat-icon [inline]="true" aria-hidden="false" aria-label="Users icon" [fontIcon]="option.icon">
-                        </mat-icon>
-                    </div>
+                </div>
+                <div class="logout-container">
+                    <button class="button_primary" (click)="logout()">
+                        <mat-icon aria-hidden="false" aria-label="Logout icon" fontIcon="logout"></mat-icon>
+                        Log out
+                    </button>
                 </div>
             </div>
         </div>

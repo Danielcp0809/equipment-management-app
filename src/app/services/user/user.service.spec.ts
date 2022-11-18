@@ -5,8 +5,8 @@ import {
 import { TestBed } from '@angular/core/testing';
 import { newUserModel } from 'src/app/shared/models/newUser.model';
 import {
-  generateManyProducts,
-  generateOneProduct,
+  generateManyUsers,
+  generateOneUser,
 } from 'src/app/shared/models/user.mock';
 import { User } from 'src/app/shared/models/user.model';
 import { environment } from 'src/environments/environment';
@@ -38,7 +38,7 @@ describe('UserService', () => {
     it('it should return a user list', (doneFnc) => {
       // AAA
       // 1.Arrange
-      const mockData: User[] = generateManyProducts(2);
+      const mockData: User[] = generateManyUsers(2);
       // 2.Act
       userService.getAllUsers().subscribe((res) => {
         // 3.Assert
@@ -55,7 +55,7 @@ describe('UserService', () => {
   describe('test for createUser', () => {
     it('should return a new product', (doneFnc) => {
       // Arrange
-      const mockData = generateOneProduct();
+      const mockData = generateOneUser();
       const newUserData: newUserModel = {
         firstName: 'Test firstname',
         lastName: 'Test lastname',
