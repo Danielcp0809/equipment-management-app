@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MsalService } from '@azure/msal-angular';
 import { AuthenticationResult } from '@azure/msal-browser';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +16,18 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private msalService: MsalService
+    private msalService: MsalService,
+    private authService: AuthService,
+    private router: Router
   ) {
     this.buildLoginForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(this.authService.getCurrentUserInfo()){
+      this.router.navigate(['/users'])
+    } 
+  }
 
   buildLoginForm() {
     this.loginForm = this.formBuilder.group({
@@ -37,14 +45,11 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.msalService.loginPopup().subscribe((res: AuthenticationResult) => {
-      console.log(res.account)
-      this.msalService.instance.setActiveAccount(res.account);
-    });
+    this.authService.login();
   }
 
   logout() {
-    this.msalService.logout();
+    this.authService.logout();
   }
 
   get userField() {
